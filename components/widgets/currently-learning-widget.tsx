@@ -1,16 +1,10 @@
-"use client"
+"use client";
 
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Progress } from "@/components/ui/progress"
-import { BookOpen, Zap } from "lucide-react"
-
-const learningData = [
-  { name: "WebAssembly", progress: 75, icon: "🔧" },
-  { name: "Rust", progress: 60, icon: "🦀" },
-  { name: "Machine Learning", progress: 45, icon: "🤖" },
-  { name: "Blockchain", progress: 30, icon: "⛓️" },
-]
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Progress } from "@/components/ui/progress";
+import { BookOpen, Zap } from "lucide-react";
+import { learningData } from "@/constants/about-me";
 
 export default function CurrentlyLearningWidget() {
   return (
@@ -22,7 +16,7 @@ export default function CurrentlyLearningWidget() {
         </CardTitle>
       </CardHeader>
       <CardContent className="space-y-4">
-        {learningData.map((item, index) => (
+        {learningData?.map((item, index) => (
           <motion.div
             key={item.name}
             initial={{ opacity: 0, x: -20 }}
@@ -49,9 +43,11 @@ export default function CurrentlyLearningWidget() {
             <Zap className="h-4 w-4 text-yellow-400" />
             <span className="text-white font-semibold">Next Up:</span>
           </div>
-          <div className="text-white/80">Exploring quantum computing applications in web development</div>
+          <div className="text-white/80">
+            Exploring Agentic AI & GenAI applications in web development
+          </div>
         </motion.div>
       </CardContent>
     </Card>
-  )
+  );
 }

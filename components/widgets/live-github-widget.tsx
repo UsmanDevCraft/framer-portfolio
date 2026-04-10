@@ -1,16 +1,16 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Github, GitCommit } from "lucide-react"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Github, GitCommit } from "lucide-react";
 
 interface GitHubData {
-  commits: number
-  stars: number
-  repos: number
-  lastCommit: string
+  commits: number;
+  stars: number;
+  repos: number;
+  lastCommit: string;
 }
 
 export default function LiveGitHubWidget() {
@@ -19,7 +19,7 @@ export default function LiveGitHubWidget() {
     stars: 89,
     repos: 42,
     lastCommit: "2 hours ago",
-  })
+  });
 
   // Simulate live updates
   useEffect(() => {
@@ -28,11 +28,11 @@ export default function LiveGitHubWidget() {
         ...prev,
         commits: prev.commits + Math.floor(Math.random() * 3),
         lastCommit: Math.random() > 0.5 ? "Just now" : "1 hour ago",
-      }))
-    }, 30000) // Update every 30 seconds
+      }));
+    }, 30000); // Update every 30 seconds
 
-    return () => clearInterval(interval)
-  }, [])
+    return () => clearInterval(interval);
+  }, []);
 
   return (
     <Card className="glass-morphism border-white/20 hover:border-green-400/50 transition-all duration-300">
@@ -44,13 +44,23 @@ export default function LiveGitHubWidget() {
       </CardHeader>
       <CardContent className="space-y-4">
         <div className="grid grid-cols-2 gap-4">
-          <motion.div whileHover={{ scale: 1.05 }} className="text-center p-3 rounded-lg bg-white/5">
-            <div className="text-2xl font-bold text-green-400">{githubData.commits}</div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="text-center p-3 rounded-lg bg-white/5"
+          >
+            <div className="text-2xl font-bold text-green-400">
+              {githubData.commits}
+            </div>
             <div className="text-sm text-white/60">Total Commits</div>
           </motion.div>
 
-          <motion.div whileHover={{ scale: 1.05 }} className="text-center p-3 rounded-lg bg-white/5">
-            <div className="text-2xl font-bold text-yellow-400">{githubData.stars}</div>
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="text-center p-3 rounded-lg bg-white/5"
+          >
+            <div className="text-2xl font-bold text-yellow-400">
+              {githubData.stars}
+            </div>
             <div className="text-sm text-white/60">Stars Earned</div>
           </motion.div>
         </div>
@@ -68,12 +78,18 @@ export default function LiveGitHubWidget() {
         <div className="space-y-2">
           <div className="text-sm text-white/60">Recent Activity:</div>
           <div className="space-y-1">
-            <div className="text-sm text-white/80">🚀 Updated portfolio design system</div>
-            <div className="text-sm text-white/80">✨ Added 3D animations to hero section</div>
-            <div className="text-sm text-white/80">🔧 Optimized build performance</div>
+            <div className="text-sm text-white/80">
+              🚀 Updated portfolio design system
+            </div>
+            <div className="text-sm text-white/80">
+              ✨ Added 3D animations to hero section
+            </div>
+            <div className="text-sm text-white/80">
+              🔧 Optimized build performance
+            </div>
           </div>
         </div>
       </CardContent>
     </Card>
-  )
+  );
 }

@@ -1,8 +1,8 @@
-"use client"
-import { motion } from "framer-motion"
-import InteractiveTimeline from "@/components/interactive-timeline"
-import LiveGitHubWidget from "@/components/widgets/live-github-widget"
-import CurrentlyLearningWidget from "@/components/widgets/currently-learning-widget"
+"use client";
+import { motion } from "framer-motion";
+import InteractiveTimeline from "@/components/interactive-timeline";
+import LiveGitHubWidget from "@/components/widgets/live-github-widget";
+import CurrentlyLearningWidget from "@/components/widgets/currently-learning-widget";
 
 export default function AboutSection() {
   return (
@@ -14,10 +14,13 @@ export default function AboutSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">About Me</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            About Me
+          </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            I'm a creative technologist who bridges the gap between design and development, crafting digital experiences
-            that push the boundaries of what's possible on the web.
+            I'm a creative developer who bridges the gap between design and
+            development, crafting digital experiences that push the boundaries
+            of what's possible on the web.
           </p>
         </motion.div>
 
@@ -51,5 +54,5 @@ export default function AboutSection() {
         </div>
       </div>
     </section>
-  )
+  );
 }

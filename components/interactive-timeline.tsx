@@ -1,46 +1,14 @@
-"use client"
+"use client";
 
-import { useState } from "react"
-import { motion, AnimatePresence } from "framer-motion"
-import { Card, CardContent } from "@/components/ui/card"
-import { Badge } from "@/components/ui/badge"
-import { Calendar, MapPin, Briefcase } from "lucide-react"
-
-const timelineData = [
-  {
-    id: 1,
-    year: "2024",
-    title: "Senior Full-Stack Developer",
-    company: "TechCorp Inc.",
-    location: "San Francisco, CA",
-    description: "Leading development of next-generation web applications using cutting-edge technologies.",
-    technologies: ["React", "Node.js", "TypeScript", "AWS"],
-    achievements: ["Increased performance by 40%", "Led team of 8 developers", "Architected microservices"],
-  },
-  {
-    id: 2,
-    year: "2022",
-    title: "Creative Technologist",
-    company: "Digital Agency",
-    location: "New York, NY",
-    description: "Bridged design and development to create immersive digital experiences.",
-    technologies: ["Three.js", "WebGL", "React", "Python"],
-    achievements: ["Won 3 design awards", "Created viral AR campaign", "Mentored junior developers"],
-  },
-  {
-    id: 3,
-    year: "2020",
-    title: "Frontend Developer",
-    company: "StartupXYZ",
-    location: "Austin, TX",
-    description: "Built responsive web applications and mobile-first experiences.",
-    technologies: ["Vue.js", "JavaScript", "CSS3", "Firebase"],
-    achievements: ["Launched 5 products", "Improved UX metrics by 60%", "Built design system"],
-  },
-]
+import { useState } from "react";
+import { motion, AnimatePresence } from "framer-motion";
+import { Card, CardContent } from "@/components/ui/card";
+import { Badge } from "@/components/ui/badge";
+import { Calendar, MapPin, Briefcase } from "lucide-react";
+import { timelineData } from "@/constants/about-me";
 
 export default function InteractiveTimeline() {
-  const [selectedItem, setSelectedItem] = useState<number | null>(null)
+  const [selectedItem, setSelectedItem] = useState<number | null>(null);
 
   return (
     <div className="relative">
@@ -60,17 +28,23 @@ export default function InteractiveTimeline() {
             <div className={`w-5/12 ${index % 2 === 0 ? "pr-8" : "pl-8"}`}>
               <motion.div
                 whileHover={{ scale: 1.05 }}
-                onClick={() => setSelectedItem(selectedItem === item.id ? null : item.id)}
+                onClick={() =>
+                  setSelectedItem(selectedItem === item.id ? null : item.id)
+                }
                 className="cursor-pointer"
               >
                 <Card className="glass-morphism border-white/20 hover:border-cyan-400/50 transition-all duration-300">
                   <CardContent className="p-6">
                     <div className="flex items-center gap-2 mb-2">
                       <Calendar className="h-4 w-4 text-cyan-400" />
-                      <span className="text-cyan-400 font-semibold">{item.year}</span>
+                      <span className="text-cyan-400 font-semibold">
+                        {item.year}
+                      </span>
                     </div>
 
-                    <h3 className="text-xl font-bold text-white mb-2">{item.title}</h3>
+                    <h3 className="text-xl font-bold text-white mb-2">
+                      {item.title}
+                    </h3>
 
                     <div className="flex items-center gap-2 mb-3">
                       <Briefcase className="h-4 w-4 text-purple-400" />
@@ -86,7 +60,11 @@ export default function InteractiveTimeline() {
 
                     <div className="flex flex-wrap gap-2">
                       {item.technologies.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="bg-white/10 text-white">
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="bg-white/10 text-white"
+                        >
                           {tech}
                         </Badge>
                       ))}
@@ -128,15 +106,19 @@ export default function InteractiveTimeline() {
               className="glass-morphism rounded-lg p-8 max-w-2xl w-full max-h-[80vh] overflow-y-auto"
             >
               {(() => {
-                const item = timelineData.find((i) => i.id === selectedItem)
-                if (!item) return null
+                const item = timelineData.find((i) => i.id === selectedItem);
+                if (!item) return null;
 
                 return (
                   <div>
-                    <h3 className="text-2xl font-bold text-white mb-4">{item.title}</h3>
+                    <h3 className="text-2xl font-bold text-white mb-4">
+                      {item.title}
+                    </h3>
                     <p className="text-white/80 mb-6">{item.description}</p>
 
-                    <h4 className="text-lg font-semibold text-cyan-400 mb-3">Key Achievements:</h4>
+                    <h4 className="text-lg font-semibold text-cyan-400 mb-3">
+                      Key Achievements:
+                    </h4>
                     <ul className="space-y-2 mb-6">
                       {item.achievements.map((achievement, i) => (
                         <li key={i} className="text-white/70 flex items-center">
@@ -148,18 +130,22 @@ export default function InteractiveTimeline() {
 
                     <div className="flex flex-wrap gap-2">
                       {item.technologies.map((tech) => (
-                        <Badge key={tech} variant="secondary" className="bg-white/10 text-white">
+                        <Badge
+                          key={tech}
+                          variant="secondary"
+                          className="bg-white/10 text-white"
+                        >
                           {tech}
                         </Badge>
                       ))}
                     </div>
                   </div>
-                )
+                );
               })()}
             </motion.div>
           </motion.div>
         )}
       </AnimatePresence>
     </div>
-  )
+  );
 }

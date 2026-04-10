@@ -1,49 +1,49 @@
-"use client"
+"use client";
 
-import type React from "react"
+import type React from "react";
 
-import { useState } from "react"
-import { motion } from "framer-motion"
-import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card"
-import { Button } from "@/components/ui/button"
-import { Input } from "@/components/ui/input"
-import { Textarea } from "@/components/ui/textarea"
-import { Badge } from "@/components/ui/badge"
-import { Mail, Phone, MapPin, Send, Mic, MicOff } from "lucide-react"
-import { useToast } from "@/hooks/use-toast"
+import { useState } from "react";
+import { motion } from "framer-motion";
+import { Card, CardContent, CardHeader, CardTitle } from "@/components/ui/card";
+import { Button } from "@/components/ui/button";
+import { Input } from "@/components/ui/input";
+import { Textarea } from "@/components/ui/textarea";
+import { Badge } from "@/components/ui/badge";
+import { Mail, Phone, MapPin, Send, Mic, MicOff } from "lucide-react";
+import { useToast } from "@/hooks/use-toast";
 
 export default function ContactSection() {
-  const [isRecording, setIsRecording] = useState(false)
+  const [isRecording, setIsRecording] = useState(false);
   const [formData, setFormData] = useState({
     name: "",
     email: "",
     message: "",
-  })
-  const { toast } = useToast()
+  });
+  const { toast } = useToast();
 
   const handleSubmit = async (e: React.FormEvent) => {
-    e.preventDefault()
+    e.preventDefault();
 
     // Simulate form submission
-    await new Promise((resolve) => setTimeout(resolve, 1000))
+    await new Promise((resolve) => setTimeout(resolve, 1000));
 
     toast({
       title: "Message sent! 🚀",
       description: "Thanks for reaching out. I'll get back to you soon!",
-    })
+    });
 
-    setFormData({ name: "", email: "", message: "" })
-  }
+    setFormData({ name: "", email: "", message: "" });
+  };
 
   const toggleRecording = () => {
-    setIsRecording(!isRecording)
+    setIsRecording(!isRecording);
     if (!isRecording) {
       toast({
         title: "Voice input activated 🎤",
         description: "Speak your message and I'll transcribe it for you!",
-      })
+      });
     }
-  }
+  };
 
   return (
     <section id="contact" className="py-20 relative">
@@ -54,9 +54,12 @@ export default function ContactSection() {
           transition={{ duration: 0.8 }}
           className="text-center mb-16"
         >
-          <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">Let's Connect</h2>
+          <h2 className="text-4xl md:text-6xl font-bold mb-6 liquid-gradient font-sora">
+            Let's Connect
+          </h2>
           <p className="text-xl text-white/80 max-w-3xl mx-auto">
-            Ready to bring your ideas to life? Let's discuss how we can create something amazing together.
+            Ready to bring your ideas to life? Let's discuss how we can create
+            something amazing together.
           </p>
         </motion.div>
 
@@ -69,7 +72,9 @@ export default function ContactSection() {
           >
             <Card className="glass-morphism border-white/20">
               <CardHeader>
-                <CardTitle className="text-white flex items-center gap-2">💬 Send a Message</CardTitle>
+                <CardTitle className="text-white flex items-center gap-2">
+                  💬 Send a Message
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <form onSubmit={handleSubmit} className="space-y-6">
@@ -77,7 +82,9 @@ export default function ContactSection() {
                     <Input
                       placeholder="Your Name"
                       value={formData.name}
-                      onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, name: e.target.value })
+                      }
                       className="glass-morphism border-white/20 text-white placeholder:text-white/50"
                       required
                     />
@@ -88,7 +95,9 @@ export default function ContactSection() {
                       type="email"
                       placeholder="Your Email"
                       value={formData.email}
-                      onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, email: e.target.value })
+                      }
                       className="glass-morphism border-white/20 text-white placeholder:text-white/50"
                       required
                     />
@@ -98,7 +107,9 @@ export default function ContactSection() {
                     <Textarea
                       placeholder="Your Message"
                       value={formData.message}
-                      onChange={(e) => setFormData({ ...formData, message: e.target.value })}
+                      onChange={(e) =>
+                        setFormData({ ...formData, message: e.target.value })
+                      }
                       className="glass-morphism border-white/20 text-white placeholder:text-white/50 min-h-32"
                       required
                     />
@@ -109,10 +120,16 @@ export default function ContactSection() {
                       size="sm"
                       onClick={toggleRecording}
                       className={`absolute top-2 right-2 ${
-                        isRecording ? "text-red-400 animate-pulse" : "text-white/60"
+                        isRecording
+                          ? "text-red-400 animate-pulse"
+                          : "text-white/60"
                       }`}
                     >
-                      {isRecording ? <Mic className="h-4 w-4" /> : <MicOff className="h-4 w-4" />}
+                      {isRecording ? (
+                        <Mic className="h-4 w-4" />
+                      ) : (
+                        <MicOff className="h-4 w-4" />
+                      )}
                     </Button>
                   </div>
 
@@ -139,7 +156,9 @@ export default function ContactSection() {
             {/* Contact Information */}
             <Card className="glass-morphism border-white/20">
               <CardHeader>
-                <CardTitle className="text-white flex items-center gap-2">📞 Get in Touch</CardTitle>
+                <CardTitle className="text-white flex items-center gap-2">
+                  📞 Get in Touch
+                </CardTitle>
               </CardHeader>
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
@@ -162,7 +181,9 @@ export default function ContactSection() {
             {/* AI Assistant */}
             <Card className="glass-morphism border-white/20">
               <CardHeader>
-                <CardTitle className="text-white flex items-center gap-2">🤖 AI Assistant</CardTitle>
+                <CardTitle className="text-white flex items-center gap-2">
+                  🤖 AI Assistant
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="space-y-4">
@@ -172,20 +193,30 @@ export default function ContactSection() {
                     </div>
                     <div className="flex-1">
                       <p className="text-white/80 text-sm">
-                        Hi! I'm John's AI assistant. I can help answer questions about his experience, schedule
-                        meetings, or provide project details. What would you like to know?
+                        Hi! I'm John's AI assistant. I can help answer questions
+                        about his experience, schedule meetings, or provide
+                        project details. What would you like to know?
                       </p>
                     </div>
                   </div>
 
                   <div className="flex flex-wrap gap-2">
-                    <Badge variant="secondary" className="bg-white/10 text-white cursor-pointer hover:bg-white/20">
+                    <Badge
+                      variant="secondary"
+                      className="bg-white/10 text-white cursor-pointer hover:bg-white/20"
+                    >
                       Tell me about John's experience
                     </Badge>
-                    <Badge variant="secondary" className="bg-white/10 text-white cursor-pointer hover:bg-white/20">
+                    <Badge
+                      variant="secondary"
+                      className="bg-white/10 text-white cursor-pointer hover:bg-white/20"
+                    >
                       What technologies does he use?
                     </Badge>
-                    <Badge variant="secondary" className="bg-white/10 text-white cursor-pointer hover:bg-white/20">
+                    <Badge
+                      variant="secondary"
+                      className="bg-white/10 text-white cursor-pointer hover:bg-white/20"
+                    >
                       Schedule a meeting
                     </Badge>
                   </div>
@@ -196,15 +227,33 @@ export default function ContactSection() {
             {/* Social Links */}
             <Card className="glass-morphism border-white/20">
               <CardHeader>
-                <CardTitle className="text-white flex items-center gap-2">🌐 Connect Online</CardTitle>
+                <CardTitle className="text-white flex items-center gap-2">
+                  🌐 Connect Online
+                </CardTitle>
               </CardHeader>
               <CardContent>
                 <div className="grid grid-cols-2 gap-4">
                   {[
-                    { name: "GitHub", icon: "🐙", color: "hover:text-gray-400" },
-                    { name: "LinkedIn", icon: "💼", color: "hover:text-blue-400" },
-                    { name: "Twitter", icon: "🐦", color: "hover:text-cyan-400" },
-                    { name: "Discord", icon: "🎮", color: "hover:text-purple-400" },
+                    {
+                      name: "GitHub",
+                      icon: "🐙",
+                      color: "hover:text-gray-400",
+                    },
+                    {
+                      name: "LinkedIn",
+                      icon: "💼",
+                      color: "hover:text-blue-400",
+                    },
+                    {
+                      name: "Twitter",
+                      icon: "🐦",
+                      color: "hover:text-cyan-400",
+                    },
+                    {
+                      name: "Discord",
+                      icon: "🎮",
+                      color: "hover:text-purple-400",
+                    },
                   ].map((social) => (
                     <motion.a
                       key={social.name}
@@ -231,15 +280,19 @@ export default function ContactSection() {
           className="mt-20 pt-8 border-t border-white/10 text-center"
         >
           <div className="flex flex-col md:flex-row items-center justify-between gap-4">
-            <div className="text-white/60">© 2025 John Doe. Crafted with ❤️ and cutting-edge tech.</div>
+            <div className="text-white/60">
+              © 2025 Usman Awan. Crafted with ❤️ and cutting-edge tech.
+            </div>
 
             <div className="flex items-center gap-4">
               <div className="w-16 h-1 bg-gradient-to-r from-cyan-400 to-purple-400 rounded-full animate-pulse" />
-              <span className="text-white/40 text-sm">Powered by Next.js & Three.js</span>
+              <span className="text-white/40 text-sm">
+                Powered by Next.js & Three.js
+              </span>
             </div>
           </div>
         </motion.footer>
       </div>
     </section>
-  )
+  );
 }
