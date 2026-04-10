@@ -1,23 +1,23 @@
-"use client"
+"use client";
 
-import { useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Moon, Sun, Menu, X } from "lucide-react"
-import { useTheme } from "next-themes"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { Moon, Sun, Menu, X } from "lucide-react";
+import { useTheme } from "next-themes";
 
 export default function Navigation() {
-  const [isOpen, setIsOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-  const { theme, setTheme } = useTheme()
+  const [isOpen, setIsOpen] = useState(false);
+  const [scrolled, setScrolled] = useState(false);
+  const { theme, setTheme } = useTheme();
 
   useEffect(() => {
     const handleScroll = () => {
-      setScrolled(window.scrollY > 50)
-    }
-    window.addEventListener("scroll", handleScroll)
-    return () => window.removeEventListener("scroll", handleScroll)
-  }, [])
+      setScrolled(window.scrollY > 50);
+    };
+    window.addEventListener("scroll", handleScroll);
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, []);
 
   const navItems = [
     { name: "Home", href: "#home" },
@@ -26,7 +26,7 @@ export default function Navigation() {
     { name: "Skills", href: "#skills" },
     { name: "Blog", href: "#blog" },
     { name: "Contact", href: "#contact" },
-  ]
+  ];
 
   return (
     <motion.nav
@@ -38,8 +38,11 @@ export default function Navigation() {
     >
       <div className="container mx-auto px-6 py-4">
         <div className="flex items-center justify-between">
-          <motion.div whileHover={{ scale: 1.05 }} className="text-2xl font-bold liquid-gradient font-sora">
-            John Doe
+          <motion.div
+            whileHover={{ scale: 1.05 }}
+            className="text-2xl font-bold liquid-gradient font-sora"
+          >
+            Usman Awan
           </motion.div>
 
           {/* Desktop Navigation */}
@@ -60,14 +63,27 @@ export default function Navigation() {
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
               className="text-white hover:text-cyan-400"
             >
-              {theme === "dark" ? <Sun className="h-5 w-5" /> : <Moon className="h-5 w-5" />}
+              {theme === "dark" ? (
+                <Sun className="h-5 w-5" />
+              ) : (
+                <Moon className="h-5 w-5" />
+              )}
             </Button>
           </div>
 
           {/* Mobile Navigation */}
           <div className="md:hidden">
-            <Button variant="ghost" size="icon" onClick={() => setIsOpen(!isOpen)} className="text-white">
-              {isOpen ? <X className="h-6 w-6" /> : <Menu className="h-6 w-6" />}
+            <Button
+              variant="ghost"
+              size="icon"
+              onClick={() => setIsOpen(!isOpen)}
+              className="text-white"
+            >
+              {isOpen ? (
+                <X className="h-6 w-6" />
+              ) : (
+                <Menu className="h-6 w-6" />
+              )}
             </Button>
           </div>
         </div>
@@ -93,5 +109,5 @@ export default function Navigation() {
         )}
       </div>
     </motion.nav>
-  )
+  );
 }

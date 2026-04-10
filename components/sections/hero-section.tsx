@@ -1,23 +1,28 @@
-"use client"
+"use client";
 
-import { useRef, useState, useEffect } from "react"
-import { motion } from "framer-motion"
-import { Button } from "@/components/ui/button"
-import { Download, Rocket, AlertCircle } from "lucide-react"
-import ParticleBackground from "@/components/3d/particle-background"
-import HolographicAvatar from "@/components/3d/holographic-avatar"
-import { isWebGLSupported } from "@/lib/webgl-utils"
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { Button } from "@/components/ui/button";
+import { AlertCircle } from "lucide-react";
+import ParticleBackground from "@/components/3d/particle-background";
+import HolographicAvatar from "@/components/3d/holographic-avatar";
+import { isWebGLSupported } from "@/lib/webgl-utils";
+import { useRouter } from "next/navigation";
+import { downloadCV } from "@/utils/helper";
 
 export default function HeroSection() {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const [webglSupported, setWebglSupported] = useState(true)
+  const [webglSupported, setWebglSupported] = useState(true);
+  const router = useRouter();
 
   useEffect(() => {
-    setWebglSupported(isWebGLSupported())
-  }, [])
+    setWebglSupported(isWebGLSupported());
+  }, []);
 
   return (
-    <section id="home" className="relative min-h-screen flex items-center justify-center overflow-hidden">
+    <section
+      id="home"
+      className="relative min-h-screen flex items-center justify-center overflow-hidden"
+    >
       {/* 3D Background */}
       <div className="absolute inset-0 z-0">
         <ParticleBackground />
@@ -33,7 +38,9 @@ export default function HeroSection() {
           <div className="glass-morphism border-yellow-400/50 rounded-lg p-3 max-w-md mx-auto">
             <div className="flex items-center gap-2 text-yellow-400">
               <AlertCircle className="h-4 w-4" />
-              <span className="text-sm">3D features unavailable - displaying in 2D mode</span>
+              <span className="text-sm">
+                3D features unavailable - displaying in 2D mode
+              </span>
             </div>
           </div>
         </motion.div>
@@ -64,7 +71,7 @@ export default function HeroSection() {
             transition={{ delay: 0.8, duration: 1 }}
             className="text-6xl md:text-8xl font-bold mb-6 liquid-gradient font-sora"
           >
-            John Doe
+            Usman Awan
           </motion.h1>
 
           {/* Subheading */}
@@ -88,15 +95,19 @@ export default function HeroSection() {
               size="lg"
               className="glass-morphism hover:animate-glow text-white border-cyan-400 hover:border-cyan-300 px-8 py-4 text-lg bg-transparent"
               variant="outline"
+              onClick={() => {
+                router.push("/#about");
+              }}
             >
-              <Rocket className="mr-2 h-5 w-5" />🚀 Explore My Universe
+              🚀 Explore My Universe
             </Button>
             <Button
               size="lg"
               className="glass-morphism hover:animate-glow text-white border-purple-400 hover:border-purple-300 px-8 py-4 text-lg bg-transparent"
               variant="outline"
+              onClick={downloadCV}
             >
-              <Download className="mr-2 h-5 w-5" />📄 Download Resume
+              📄 Download Resume
             </Button>
           </motion.div>
         </motion.div>
@@ -118,5 +129,5 @@ export default function HeroSection() {
         </div>
       </motion.div>
     </section>
-  )
+  );
 }
