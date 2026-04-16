@@ -163,17 +163,17 @@ export default function ContactSection() {
               <CardContent className="space-y-4">
                 <div className="flex items-center gap-3">
                   <Mail className="h-5 w-5 text-cyan-400" />
-                  <span className="text-white/80">john.doe@example.com</span>
+                  <span className="text-white/80">usmanaugust28@gmail.com</span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <Phone className="h-5 w-5 text-green-400" />
-                  <span className="text-white/80">+1 (555) 123-4567</span>
+                  <span className="text-white/80">+92 317 5769210</span>
                 </div>
 
                 <div className="flex items-center gap-3">
                   <MapPin className="h-5 w-5 text-purple-400" />
-                  <span className="text-white/80">San Francisco, CA</span>
+                  <span className="text-white/80">Abbottabad, Pakistan</span>
                 </div>
               </CardContent>
             </Card>
@@ -193,9 +193,9 @@ export default function ContactSection() {
                     </div>
                     <div className="flex-1">
                       <p className="text-white/80 text-sm">
-                        Hi! I'm John's AI assistant. I can help answer questions
-                        about his experience, schedule meetings, or provide
-                        project details. What would you like to know?
+                        Hi! I'm Usman's AI assistant. I can help answer
+                        questions about his experience, schedule meetings, or
+                        provide project details. What would you like to know?
                       </p>
                     </div>
                   </div>
@@ -205,7 +205,7 @@ export default function ContactSection() {
                       variant="secondary"
                       className="bg-white/10 text-white cursor-pointer hover:bg-white/20"
                     >
-                      Tell me about John's experience
+                      Tell me about Usman's experience
                     </Badge>
                     <Badge
                       variant="secondary"
@@ -238,26 +238,31 @@ export default function ContactSection() {
                       name: "GitHub",
                       icon: "🐙",
                       color: "hover:text-gray-400",
+                      link: "https://github.com/UsmanDevCraft",
                     },
                     {
                       name: "LinkedIn",
                       icon: "💼",
                       color: "hover:text-blue-400",
+                      link: "https://www.linkedin.com/in/muhammad-usman-awan-a77906280",
                     },
                     {
-                      name: "Twitter",
-                      icon: "🐦",
+                      name: "Dev.to",
+                      icon: "🖊️",
                       color: "hover:text-cyan-400",
+                      link: "https://dev.to/usman_awan",
                     },
                     {
-                      name: "Discord",
-                      icon: "🎮",
+                      name: "Facebook",
+                      icon: "📘",
                       color: "hover:text-purple-400",
+                      link: "https://www.facebook.com/profile.php?id=100011626533433",
                     },
                   ].map((social) => (
                     <motion.a
                       key={social.name}
-                      href="#"
+                      href={social.link}
+                      target="_blank"
                       whileHover={{ scale: 1.05 }}
                       whileTap={{ scale: 0.95 }}
                       className={`flex items-center gap-2 p-3 rounded-lg glass-morphism border border-white/10 text-white/80 transition-colors ${social.color}`}
